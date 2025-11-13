@@ -1,106 +1,102 @@
-# Superstore Sales Analysis using Python
+# 📊 Retail Performance Dashboard (Tableau)
 
-### 📊 Project Overview  
-Performed exploratory data analysis (EDA) on the Superstore dataset to uncover trends in **sales**, **profit**, and **discount impact** using Python.  
-The goal of this project is to turn raw transactional data into **clear, actionable business insights** that support decision-making in pricing, discounting, and product strategy.
+## 📌 1. Project Overview  
+Designed an interactive Tableau dashboard using the Superstore dataset to analyze **sales performance**, **profitability**, **discount impact**, and **shipping mode efficiency** across U.S. regions and product categories.  
 
----
-
-### ❓ Business Questions Answered  
-- Which **regions** and **categories** generate the highest profit?  
-- How do **discounts** impact profit margins?  
-- Which **customer segments** contribute most to revenue and profit?  
-- Which **product sub-categories** are consistently loss-making?  
-- How do different **shipping modes** affect profitability?
+The goal of this dashboard is to transform raw retail transactions into **actionable business insights** that support decisions in pricing, discounting, inventory planning, and strategy.
 
 ---
 
-### 🧠 Key Findings  
-- **Total Sales:** `$2.3M`  
-- **Total Profit:** `$286K`  
-- **Average Profit Margin:** `12.4%`  
-- Higher discounts correlated with **significant profit loss**, especially in certain furniture sub-categories.  
-- Identified top-performing regions and categories based on profitability.  
-- Some sub-categories showed **high sales but low or negative profit**, indicating discount or pricing issues.
+## ❓ 2. Business Questions Answered  
+- Which regions generate the **highest and lowest** sales and profit?  
+- How do different **product categories** contribute to revenue and profitability?  
+- Do **higher discounts** reduce profit? If yes, by how much?  
+- Which **shipping modes** are most and least profitable?  
+- How does **monthly profit** vary across different regions?  
 
 ---
 
-### 🧰 Tools & Libraries  
-- **Python**  
-- **Pandas** – data cleaning, transformation & aggregations  
-- **Matplotlib** – visualizations  
-- **Seaborn** – statistical plots & aesthetics  
-- (Optionally) **NumPy** for numerical calculations  
+## 🧠 3. Key Insights  
+- The **West region** leads in overall sales, while **Central** has weaker profit margins.  
+- **Furniture category** shows strong sales but low/negative profit due to high discounting.  
+- A strong **negative correlation** exists between **Discount** and **Profit**  
+  → excessive discounting directly reduces profitability.  
+- **Standard Class** shipping yields the highest overall profit; **Same Day** shipping performs worst.  
+- Monthly profit trends show clear **seasonality** and region-specific performance swings.
 
 ---
 
-### 🛠 Skills Demonstrated  
-- Data cleaning and preprocessing  
-- GroupBy operations, aggregations & KPI calculations (e.g., profit margin)  
-- Exploratory Data Analysis (EDA)  
-- Creating business-focused charts for stakeholders  
-- Interpreting relationships between discount, sales, and profit  
-- Communicating insights in a structured, business-friendly format  
+## 📊 4. Dashboard Visualizations Included  
+The Tableau dashboard consists of:
+
+- **Total Sales by Region**  
+- **Profit by Category**  
+- **Discount vs Profit Scatterplot**  
+  - With regression trendline showing negative correlation  
+- **Profitability by Shipping Mode**  
+- **Monthly Profit Trend by Region**  
+
+### 🔧 Design Elements  
+- Light gray background  
+- White chart containers  
+- Clean borders and visual hierarchy  
+- Consistent colors, spacing, and typography  
+- Card-based layout for modern UI  
 
 ---
 
-### 📈 Visualizations  
-The project includes multiple visual analyses, such as:
-
-- **Regional Sales Bar Chart** – Compare total sales across regions  
-- **Profit by Category** – Identify high- and low-margin product categories  
-- **Discount vs Profit Scatter Plot** – Understand how increasing discounts affect profit  
-- **Shipping Mode Profit Distribution** – See which shipping modes are more profitable  
-- (Optional) **Top/Bottom Sub-Categories by Profit** – Detect loss-making products
+## 🛠 5. Tools Used  
+- **Tableau Desktop / Tableau Public**  
+- **CSV Dataset (Superstore)**  
+- **Excel** (optional preprocessing)
 
 ---
 
-### 🔄 Analysis Workflow (High Level)  
-
-1. **Load & Inspect Data**  
-   - Read `Sample - Superstore.csv` using Pandas  
-   - Check data types, missing values, and basic statistics  
-
-2. **Data Cleaning & Feature Engineering**  
-   - Convert date columns to datetime  
-   - Create **Profit Margin** = `Profit / Sales`  
-   - Derive additional time-based fields (e.g., Year, Month) if needed  
-
-3. **Exploratory Data Analysis (EDA)**  
-   - Sales & profit by region, category, sub-category, and segment  
-   - Distribution of discounts and their relationship with profit  
-   - Identify top and bottom contributing segments and products  
-
-4. **Visualization & Insight Generation**  
-   - Build charts to visually support findings  
-   - Highlight regions/categories where discounts are eroding profit  
-   - Summarize insights in a report (`Python_Project_Report.pdf`)  
+## 🛠 6. Skills Demonstrated  
+- Interactive dashboard design  
+- Data modeling & calculated fields (Profit Margin, Year/Month)  
+- Trend analysis & correlation visualization  
+- Using containers, borders, shading for layout hierarchy  
+- Business insight storytelling  
+- KPI visualization (Sales, Profit, Margin, Category Performance)
 
 ---
 
-### 🧾 Files  
+## 🔄 7. Dashboard Development Workflow  
 
-- `superstore_analysis.py` – main Python script for analysis  
-- `Sample - Superstore.csv` – input dataset (Superstore sample data)  
-- `Python_Project_Report.pdf` – summary of key insights & charts  
-- `README.md` – project documentation (this file)
+### **1. Data Import & Exploration**
+- Loaded the Superstore CSV into Tableau  
+- Validated data types (numeric, dates, categories)  
 
-(Optional, if you add folders later):  
-- `plots/` – exported PNGs of charts  
+### **2. Feature Engineering**
+- Added **Profit Margin** field  
+- Extracted **Year** and **Month** fields (optional)  
+- Built discount buckets where needed  
+
+### **3. Visualization Creation**
+- Bar charts for Sales & Profit  
+- Scatterplot with trendline for Discounts vs Profit  
+- Shipping mode performance comparison  
+- Monthly area/line charts  
+
+### **4. Dashboard Design**
+- Card-based layout for clarity  
+- Color-coded categories and regions  
+- Trendline to highlight discount impact  
+- Title bar + clean footer  
+- Mobile-friendly spacing  
+
+### **5. Insights Summary**
+- Identified loss-making sub-categories  
+- Highlighted discount-heavy loss zones  
+- Suggested underperforming regions needing intervention  
 
 ---
 
-### 📁 Suggested Repository Structure  
+## 📁 8. Files Included  
+- **Retail_Performance_Dashboard.twbx** – packaged Tableau workbook  
+- **dashboard_preview.png** – dashboard screenshot  
+- **Retail_Performance_Insights.pdf** – summary of findings (optional)  
+- **README.md** – this file  
 
-```bash
-Superstore_Python_Analysis/
-│── superstore_analysis.py
-│── Sample - Superstore.csv
-│── Python_Project_Report.pdf
-└── README.md
-# (Optional)
-└── plots/
-    ├── regional_sales_bar_chart.png
-    ├── profit_by_category.png
-    ├── discount_vs_profit_scatter.png
-    └── shipping_mode_profit.png
+(Optional folder if added later:)
