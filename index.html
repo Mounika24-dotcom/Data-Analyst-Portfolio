@@ -1,43 +1,239 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mounika Yegireddi – Data Analyst Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mounika Yegireddi — Data Analyst Portfolio</title>
+  <meta name="description" content="Data Analyst portfolio — dashboards, Python/R projects, and case studies by Mounika Yegireddi." />
+
+  <!-- Social preview -->
+  <meta property="og:title" content="Mounika Yegireddi — Data Analyst Portfolio">
+  <meta property="og:description" content="Dashboards, Python/R analytics projects, and case studies.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="Retail_Performance_Dashboard/dashboard_preview.png">
+
   <style>
-    body { font-family:'Inter',sans-serif; background:#f9f9f9; color:#222; margin:0; padding:0; }
-    header { background:#2f80ed; color:#fff; text-align:center; padding:2rem 1rem; }
-    h1 { margin:0; font-size:2rem; }
-    .container { max-width:900px; margin:2rem auto; background:#fff; padding:2rem; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.1); }
-    h2 { color:#2f80ed; margin-top:2rem; }
-    a { color:#2f80ed; text-decoration:none; }
-    a:hover { text-decoration:underline; }
-    .project img { width:100%; border-radius:8px; margin-top:0.5rem; }
+    :root{
+      --bg:#f7f9fc;
+      --card:#ffffff;
+      --ink:#1b1f23;
+      --muted:#54636e;
+      --brand:#0b72e7;
+      --accent:#16a34a;
+      --border:#e6e9ef;
+      --shadow:0 10px 25px rgba(0,0,0,.06);
+      --radius:16px;
+      --radius-sm:12px;
+    }
+    /* Base */
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif;
+      color:var(--ink);
+      background:linear-gradient(180deg,#f8fbff 0%, #f7f9fc 100%);
+    }
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{
+      max-width:1080px;
+      margin:0 auto;
+      padding:24px;
+    }
+
+    /* Header / hero */
+    .hero{
+      display:grid;
+      gap:16px;
+      padding:28px 24px;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    .hero h1{
+      margin:0;
+      font-size: clamp(28px, 4vw, 36px);
+      letter-spacing:.3px;
+    }
+    .hero p{
+      margin:4px 0 0;
+      color:var(--muted);
+      line-height:1.55;
+      font-size:16px;
+    }
+    .badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:8px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; font-size:13px; border-radius:999px;
+      background:#eef4ff; color:#0b4fd9; border:1px solid #dbe7ff;
+    }
+
+    /* Section titles */
+    .section-title{
+      margin:28px 6px 14px;
+      font-size:20px; letter-spacing:.2px;
+    }
+
+    /* Cards grid */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12, 1fr);
+      gap:18px;
+    }
+    .card{
+      grid-column: span 12;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius-sm);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .card-body{padding:18px 18px 6px}
+    .card h3{margin:0 0 4px; font-size:18px}
+    .card p{margin:6px 0 0; color:var(--muted); line-height:1.55}
+    .card footer{
+      display:flex; flex-wrap:wrap; gap:10px;
+      padding:14px 18px 18px;
+    }
+    .pill{
+      padding:7px 12px; border-radius:10px; font-size:13px; border:1px solid var(--border);
+      background:#fafcff; color:#334155;
+    }
+
+    /* Media */
+    .preview{
+      display:block; width:100%; max-height:520px; object-fit:cover;
+      border-bottom:1px solid var(--border);
+    }
+
+    /* CTA buttons */
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 14px; border-radius:10px; font-weight:600; font-size:14px;
+      background:var(--brand); color:#fff; border:1px solid #065dd8; box-shadow:0 6px 16px rgba(11,114,231,.18);
+    }
+    .btn.secondary{ background:#0f172a; border-color:#0f172a }
+    .btn:hover{ filter:brightness(1.03) }
+
+    /* Two-column helper on wide screens */
+    @media (min-width: 880px){
+      .card--half{grid-column: span 6;}
+    }
+
+    /* Footer */
+    .footer{
+      margin-top:30px; padding:24px;
+      background:transparent; color:var(--muted); text-align:center; font-size:14px;
+    }
+    .links{display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:8px}
   </style>
 </head>
 <body>
-  <header>
-    <h1>Mounika Yegireddi – Data Analyst Portfolio</h1>
-    <p>Transforming data into decisions and insights into impact.</p>
-  </header>
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <h1>👋 Hi, I’m <strong>Mounika Yegireddi</strong></h1>
+      <p>
+        Data Analyst focused on turning messy data into clear, actionable insights. I work across
+        <strong>Python</strong>, <strong>SQL</strong>, and <strong>Tableau</strong> to build dashboards, perform
+        statistical & ML analysis, and communicate results that move the business.
+      </p>
+      <div class="badges">
+        <span class="badge">Python</span>
+        <span class="badge">SQL</span>
+        <span class="badge">Tableau</span>
+        <span class="badge">Power BI</span>
+        <span class="badge">Excel</span>
+        <span class="badge">EDA & Visualization</span>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:4px">
+        <a class="btn" href="mailto:yegireddimounika1999@gmail.com">📩 Email</a>
+        <a class="btn secondary" href="https://www.linkedin.com/in/mounika-yegireddi/" target="_blank" rel="noopener">🔗 LinkedIn</a>
+        <a class="btn secondary" href="https://github.com/Mounika24-dotcom" target="_blank" rel="noopener">🐙 GitHub</a>
+      </div>
+    </section>
 
-  <div class="container">
-    <h2>📊 Retail Performance Dashboard</h2>
-    <p>Interactive Tableau dashboard analyzing regional sales and profit trends.</p>
-    <img src="Retail_Performance_Dashboard/dashboard_preview.png" alt="Retail Dashboard">
-    <p><a href="https://public.tableau.com/app/profile/mounika.yegireddi">View on Tableau Public →</a></p>
+    <!-- PROJECTS -->
+    <h2 class="section-title">Featured Projects</h2>
+    <section class="grid">
 
-    <h2>🐍 Superstore Sales Analysis (Python)</h2>
-    <p>Exploratory Data Analysis with Pandas and Matplotlib to find profitability trends.</p>
+      <!-- Tableau Dashboard (wide) -->
+      <article class="card" style="grid-column: span 12">
+        <img class="preview" src="Retail_Performance_Dashboard/dashboard_preview.png" alt="Retail Performance Dashboard preview (Tableau)">
+        <div class="card-body">
+          <h3>📊 Retail Performance Dashboard (Tableau)</h3>
+          <p>
+            Interactive dashboard analyzing regional <strong>sales</strong>, <strong>profitability</strong>,
+            discount impact, and shipping-mode margins. Includes a regression trendline revealing
+            profit erosion beyond specific discount thresholds.
+          </p>
+        </div>
+        <footer>
+          <!-- Update this Tableau Public link after you publish -->
+          <a class="btn" href="https://public.tableau.com/app/profile/mounika.yegireddi8627/viz/RetailPerformancedashboard/Dashboard1#1" target="_blank" rel="noopener">🔎 View on Tableau Public</a>
+          <a class="pill" href="https://github.com/Mounika24-dotcom/Data-Analyst-Portfolio/tree/main/Retail_Performance_Dashboard" target="_blank" rel="noopener">Repository folder</a>
+          <span class="pill">Tools: Tableau · CSV (Superstore)</span>
+        </footer>
+      </article>
 
-    <h2>☁️ Air Quality & Health Study (R)</h2>
-    <p>Correlation analysis between air pollution and health indicators using R.</p>
+      <!-- Python project -->
+      <article class="card card--half">
+        <div class="card-body">
+          <h3>🐍 Superstore Sales Analysis (Python)</h3>
+          <p>
+            End-to-end EDA using <strong>Pandas</strong> & <strong>Matplotlib</strong> to surface category/region
+            drivers of profit. Includes outlier handling, profit-margin KPI, and visuals you can lift into
+            a slide deck.
+          </p>
+        </div>
+        <footer>
+          <a class="btn" href="https://github.com/Mounika24-dotcom/Data-Analyst-Portfolio/tree/main/Superstore_Sales_Python" target="_blank" rel="noopener">📁 View code</a>
+          <span class="pill">Pandas · Matplotlib</span>
+        </footer>
+      </article>
 
-    <h2>📬 Connect with Me</h2>
-    <p>Email: <a href="mailto:yegireddimounika1999@gmail.com">yegireddimounika1999@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/mounika-yegireddi/">linkedin.com/in/mounika-yegireddi</a></p>
-    <p>GitHub: <a href="https://github.com/Mounika24-dotcom">github.com/Mounika24-dotcom</a></p>
-  </div>
+      <!-- R project -->
+      <article class="card card--half">
+        <div class="card-body">
+          <h3>☁️ Air Quality & Health Study (R)</h3>
+          <p>
+            Correlation analysis between air pollution and health indicators using <strong>R</strong>.
+            Clean feature engineering + tidy visualizations to convey risk patterns clearly.
+          </p>
+        </div>
+        <footer>
+          <a class="btn" href="https://github.com/Mounika24-dotcom/Data-Analyst-Portfolio/tree/main/AirQuality_Health_R" target="_blank" rel="noopener">📁 View code</a>
+          <span class="pill">tidyverse · ggplot2</span>
+        </footer>
+      </article>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="card" style="margin-top:18px">
+      <div class="card-body" style="text-align:center">
+        <h3 style="margin-bottom:6px">Let’s Connect</h3>
+        <p class="muted" style="color:var(--muted); margin:0 0 10px">
+          Open to internships & full-time roles in Data Analytics / Business Intelligence.
+        </p>
+        <div class="links">
+          <a href="mailto:yegireddimounika1999@gmail.com">📩 yegireddimounika1999@gmail.com</a>
+          <a href="https://www.linkedin.com/in/mounika-yegireddi/" target="_blank" rel="noopener">🔗 LinkedIn</a>
+          <a href="https://github.com/Mounika24-dotcom" target="_blank" rel="noopener">🐙 GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <p class="footer">© <span id="y"></span> Mounika Yegireddi • Built with GitHub Pages</p>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
