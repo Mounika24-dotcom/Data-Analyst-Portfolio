@@ -24,36 +24,165 @@
       --shadow:0 10px 25px rgba(0,0,0,.06);
       --radius:16px;
       --radius-sm:12px;
+      --nav:#ffffff;
     }
+
+    /* Dark mode (automatic) */
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#020617;
+        --card:#020617;
+        --nav:#020617;
+        --ink:#e5e7eb;
+        --muted:#9ca3af;
+        --border:#1f2933;
+        --shadow:0 10px 25px rgba(0,0,0,.8);
+      }
+      body{
+        background:radial-gradient(circle at top,#0f172a 0,#020617 55%,#020617 100%);
+      }
+    }
+
     /* Base */
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
       color:var(--ink);
       background:linear-gradient(180deg,#f8fbff 0%, #f7f9fc 100%);
     }
     a{color:var(--brand); text-decoration:none}
     a:hover{text-decoration:underline}
+    img{max-width:100%; display:block}
+
     .container{
       max-width:1080px;
       margin:0 auto;
-      padding:24px;
+      padding:20px 16px 32px;
     }
 
-    /* Header / hero */
+    /* NAVBAR */
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:20;
+      background:var(--nav);
+      border-bottom:1px solid var(--border);
+      backdrop-filter:blur(12px);
+    }
+    .nav-inner{
+      max-width:1080px;
+      margin:0 auto;
+      padding:10px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .nav-brand{
+      font-weight:700;
+      letter-spacing:.3px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-size:16px;
+    }
+    .nav-dot{
+      width:10px;
+      height:10px;
+      border-radius:999px;
+      background:linear-gradient(135deg,#22c55e,#0ea5e9);
+      box-shadow:0 0 0 4px rgba(34,197,94,.18);
+    }
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-size:14px;
+    }
+    .nav-link{
+      color:var(--muted);
+      text-decoration:none;
+      position:relative;
+      padding-bottom:2px;
+    }
+    .nav-link::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:0;
+      width:0;
+      height:2px;
+      border-radius:999px;
+      background:var(--brand);
+      transition:width .18s ease-out;
+    }
+    .nav-link:hover{
+      color:var(--ink);
+      text-decoration:none;
+    }
+    .nav-link:hover::after{
+      width:100%;
+    }
+
+    /* small screens nav */
+    @media (max-width:640px){
+      .nav-inner{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+
+    /* Buttons */
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 14px;
+      border-radius:10px;
+      font-weight:600;
+      font-size:14px;
+      background:var(--brand);
+      color:#fff;
+      border:1px solid #065dd8;
+      box-shadow:0 6px 16px rgba(11,114,231,.18);
+      cursor:pointer;
+      transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
+      text-decoration:none;
+    }
+    .btn.secondary{
+      background:#0f172a;
+      border-color:#0f172a;
+      box-shadow:0 6px 16px rgba(15,23,42,.3);
+    }
+    .btn.ghost{
+      background:transparent;
+      color:var(--brand);
+      border-color:var(--border);
+      box-shadow:none;
+    }
+    .btn:hover{
+      filter:brightness(1.04);
+      transform:translateY(-1px);
+      text-decoration:none;
+      box-shadow:0 8px 20px rgba(11,114,231,.22);
+    }
+
+    /* HERO */
     .hero{
       display:grid;
       gap:16px;
-      padding:28px 24px;
+      margin-top:18px;
+      padding:24px 20px 20px;
       background:var(--card);
       border:1px solid var(--border);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
+      animation:fadeUp .45s ease-out both;
     }
     .hero h1{
       margin:0;
-      font-size: clamp(28px, 4vw, 36px);
+      font-size:clamp(26px,4vw,34px);
       letter-spacing:.3px;
     }
     .hero p{
@@ -69,80 +198,127 @@
       margin-top:8px;
     }
     .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 12px; font-size:13px; border-radius:999px;
-      background:#eef4ff; color:#0b4fd9; border:1px solid #dbe7ff;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 11px;
+      font-size:12px;
+      border-radius:999px;
+      background:#eef4ff;
+      color:#0b4fd9;
+      border:1px solid #dbe7ff;
     }
 
     /* Section titles */
     .section-title{
       margin:28px 6px 14px;
-      font-size:20px; letter-spacing:.2px;
+      font-size:20px;
+      letter-spacing:.2px;
     }
 
     /* Cards grid */
     .grid{
       display:grid;
-      grid-template-columns:repeat(12, 1fr);
+      grid-template-columns:repeat(12,1fr);
       gap:18px;
     }
     .card{
-      grid-column: span 12;
+      grid-column:span 12;
       background:var(--card);
       border:1px solid var(--border);
       border-radius:var(--radius-sm);
       box-shadow:var(--shadow);
       overflow:hidden;
+      transition:transform .18s ease-out, box-shadow .18s ease-out, border-color .18s ease-out;
     }
-    .card-body{padding:18px 18px 6px}
+    .card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 18px 40px rgba(15,23,42,.14);
+      border-color:rgba(37,99,235,.45);
+    }
+    .card-body{padding:18px 18px 8px}
     .card h3{margin:0 0 4px; font-size:18px}
     .card p{margin:6px 0 0; color:var(--muted); line-height:1.55}
     .card footer{
-      display:flex; flex-wrap:wrap; gap:10px;
-      padding:14px 18px 18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      padding:14px 18px 16px;
     }
     .pill{
-      padding:7px 12px; border-radius:10px; font-size:13px; border:1px solid var(--border);
-      background:#fafcff; color:#334155;
+      padding:7px 12px;
+      border-radius:10px;
+      font-size:13px;
+      border:1px solid var(--border);
+      background:#fafcff;
+      color:#334155;
+      white-space:nowrap;
     }
 
     /* Media */
     .preview{
-      display:block; width:100%; max-height:520px; object-fit:cover;
+      display:block;
+      width:100%;
+      max-height:520px;
+      object-fit:cover;
       border-bottom:1px solid var(--border);
     }
 
-    /* CTA buttons */
-    .btn{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:10px 14px; border-radius:10px; font-weight:600; font-size:14px;
-      background:var(--brand); color:#fff; border:1px solid #065dd8; box-shadow:0 6px 16px rgba(11,114,231,.18);
-    }
-    .btn.secondary{ background:#0f172a; border-color:#0f172a }
-    .btn:hover{ filter:brightness(1.03) }
-
-    /* Two-column helper on wide screens */
-    @media (min-width: 880px){
-      .card--half{grid-column: span 6;}
+    /* Two-column on wide screens */
+    @media (min-width:880px){
+      .card--half{grid-column:span 6;}
     }
 
     /* Footer */
     .footer{
-      margin-top:30px; padding:24px;
-      background:transparent; color:var(--muted); text-align:center; font-size:14px;
+      margin-top:30px;
+      padding:24px;
+      background:transparent;
+      color:var(--muted);
+      text-align:center;
+      font-size:14px;
     }
-    .links{display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:8px}
+    .links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      justify-content:center;
+      margin-top:8px;
+    }
+
+    /* Simple fade-up animation */
+    @keyframes fadeUp{
+      from{opacity:0; transform:translateY(6px);}
+      to{opacity:1; transform:translateY(0);}
+    }
   </style>
 </head>
 <body>
-  <main class="container">
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <span class="nav-dot"></span>
+        <span>Mounika Yegireddi · Data Analyst</span>
+      </div>
+      <nav class="nav-links">
+        <a class="nav-link" href="#top">Home</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#contact">Contact</a>
+        <!-- Resume button (update href after uploading your PDF) -->
+        <a class="btn ghost" href="resume.pdf" target="_blank" rel="noopener">📄 Download Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="container">
     <!-- HERO -->
     <section class="hero">
       <h1>👋 Hi, I’m <strong>Mounika Yegireddi</strong></h1>
       <p>
         Data Analyst focused on turning messy data into clear, actionable insights. I work across
         <strong>Python</strong>, <strong>SQL</strong>, and <strong>Tableau</strong> to build dashboards, perform
-        statistical & ML analysis, and communicate results that move the business.
+        statistical &amp; ML analysis, and communicate results that move the business.
       </p>
       <div class="badges">
         <span class="badge">Python</span>
@@ -150,9 +326,9 @@
         <span class="badge">Tableau</span>
         <span class="badge">Power BI</span>
         <span class="badge">Excel</span>
-        <span class="badge">EDA & Visualization</span>
+        <span class="badge">EDA &amp; Visualization</span>
       </div>
-      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:4px">
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:6px">
         <a class="btn" href="mailto:yegireddimounika1999@gmail.com">📩 Email</a>
         <a class="btn secondary" href="https://www.linkedin.com/in/mounika-yegireddi/" target="_blank" rel="noopener">🔗 LinkedIn</a>
         <a class="btn secondary" href="https://github.com/Mounika24-dotcom" target="_blank" rel="noopener">🐙 GitHub</a>
@@ -160,10 +336,10 @@
     </section>
 
     <!-- PROJECTS -->
-    <h2 class="section-title">Featured Projects</h2>
+    <h2 id="projects" class="section-title">Featured Projects</h2>
     <section class="grid">
 
-      <!-- Tableau Dashboard (wide) -->
+      <!-- Tableau Dashboard -->
       <article class="card" style="grid-column: span 12">
         <img class="preview" src="Retail_Performance_Dashboard/dashboard_preview.png" alt="Retail Performance Dashboard preview (Tableau)">
         <div class="card-body">
@@ -175,7 +351,6 @@
           </p>
         </div>
         <footer>
-          <!-- Update this Tableau Public link after you publish -->
           <a class="btn" href="https://public.tableau.com/app/profile/mounika.yegireddi8627/viz/RetailPerformancedashboard/Dashboard1#1" target="_blank" rel="noopener">🔎 View on Tableau Public</a>
           <a class="pill" href="https://github.com/Mounika24-dotcom/Data-Analyst-Portfolio/tree/main/Retail_Performance_Dashboard" target="_blank" rel="noopener">Repository folder</a>
           <span class="pill">Tools: Tableau · CSV (Superstore)</span>
@@ -187,7 +362,7 @@
         <div class="card-body">
           <h3>🐍 Superstore Sales Analysis (Python)</h3>
           <p>
-            End-to-end EDA using <strong>Pandas</strong> & <strong>Matplotlib</strong> to surface category/region
+            End-to-end EDA using <strong>Pandas</strong> &amp; <strong>Matplotlib</strong> to surface category/region
             drivers of profit. Includes outlier handling, profit-margin KPI, and visuals you can lift into
             a slide deck.
           </p>
@@ -201,7 +376,7 @@
       <!-- R project -->
       <article class="card card--half">
         <div class="card-body">
-          <h3>☁️ Air Quality & Health Study (R)</h3>
+          <h3>☁️ Air Quality &amp; Health Study (R)</h3>
           <p>
             Correlation analysis between air pollution and health indicators using <strong>R</strong>.
             Clean feature engineering + tidy visualizations to convey risk patterns clearly.
@@ -215,11 +390,11 @@
     </section>
 
     <!-- CONTACT -->
-    <section class="card" style="margin-top:18px">
+    <section id="contact" class="card" style="margin-top:18px">
       <div class="card-body" style="text-align:center">
         <h3 style="margin-bottom:6px">Let’s Connect</h3>
         <p class="muted" style="color:var(--muted); margin:0 0 10px">
-          Open to internships & full-time roles in Data Analytics / Business Intelligence.
+          Open to internships &amp; full-time roles in Data Analytics / Business Intelligence.
         </p>
         <div class="links">
           <a href="mailto:yegireddimounika1999@gmail.com">📩 yegireddimounika1999@gmail.com</a>
