@@ -45,6 +45,9 @@
 
     /* Base */
     *{box-sizing:border-box}
+    html{
+      scroll-behavior:smooth;
+    }
     body{
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
@@ -54,6 +57,7 @@
     a{color:var(--brand); text-decoration:none}
     a:hover{text-decoration:underline}
     img{max-width:100%; display:block}
+    .muted{color:var(--muted);}
 
     .container{
       max-width:1080px;
@@ -99,6 +103,8 @@
       align-items:center;
       gap:14px;
       font-size:14px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
     .nav-link{
       color:var(--muted);
@@ -255,6 +261,44 @@
       white-space:nowrap;
     }
 
+    /* About section */
+    .about-grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:18px;
+    }
+    .about-col{
+      grid-column:span 12;
+    }
+    .about-list{
+      list-style:none;
+      padding:0;
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .about-list li{
+      margin-bottom:6px;
+    }
+    .about-tag-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:8px;
+    }
+    .about-tag{
+      padding:5px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      font-size:12px;
+      background:#f9fbff;
+    }
+
+    @media (min-width:880px){
+      .about-col--left{grid-column:span 7;}
+      .about-col--right{grid-column:span 5;}
+    }
+
     /* Media */
     .preview{
       display:block;
@@ -264,7 +308,7 @@
       border-bottom:1px solid var(--border);
     }
 
-    /* Two-column on wide screens */
+    /* Two-column on wide screens for project cards */
     @media (min-width:880px){
       .card--half{grid-column:span 6;}
     }
@@ -303,6 +347,7 @@
       </div>
       <nav class="nav-links">
         <a class="nav-link" href="#top">Home</a>
+        <a class="nav-link" href="#about">About</a>
         <a class="nav-link" href="#projects">Projects</a>
         <a class="nav-link" href="#contact">Contact</a>
         <!-- Resume button (update href after uploading your PDF) -->
@@ -332,6 +377,41 @@
         <a class="btn" href="mailto:yegireddimounika1999@gmail.com">📩 Email</a>
         <a class="btn secondary" href="https://www.linkedin.com/in/mounika-yegireddi/" target="_blank" rel="noopener">🔗 LinkedIn</a>
         <a class="btn secondary" href="https://github.com/Mounika24-dotcom" target="_blank" rel="noopener">🐙 GitHub</a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="card" style="margin-top:20px;">
+      <div class="card-body">
+        <div class="about-grid">
+          <div class="about-col about-col--left">
+            <h3>About Me</h3>
+            <p class="muted">
+              I’m a data analyst with a strong interest in business performance, customer behaviour,
+              and operations. I enjoy cleaning messy datasets, building clear visual stories, and
+              explaining insights in a way that non-technical stakeholders can use.
+            </p>
+            <ul class="about-list">
+              <li>✅ Comfortable working end-to-end: from data cleaning to dashboards &amp; presentations.</li>
+              <li>✅ Enjoy breaking down vague business questions into measurable metrics and hypotheses.</li>
+              <li>✅ Focused on roles in Data Analytics, BI, and Reporting.</li>
+            </ul>
+          </div>
+          <div class="about-col about-col--right">
+            <h4 style="margin:0 0 6px;">How I Work</h4>
+            <ul class="about-list">
+              <li>📥 Collect &amp; clean data using Python / SQL.</li>
+              <li>📊 Explore trends &amp; build visuals in Tableau / Power BI / Matplotlib.</li>
+              <li>📣 Turn findings into clear recommendations for the business.</li>
+            </ul>
+            <div class="about-tag-row">
+              <span class="about-tag">ETL &amp; EDA</span>
+              <span class="about-tag">A/B testing basics</span>
+              <span class="about-tag">KPI dashboards</span>
+              <span class="about-tag">Storytelling with data</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -368,7 +448,7 @@
           </p>
         </div>
         <footer>
-          <a class="btn" href="https://github.com/Mounika24-dotcom/Data-Analyst-Portfolio/tree/main/Superstore_Sales_Python" target="_blank" rel="noopener">📁 View code</a>
+          <a class="btn" href="https://github.com/Mounika24-dotcom/Data-Analyst-Portfolio/tree/main/Superstore_Python_Analysis" target="_blank" rel="noopener">📁 View code</a>
           <span class="pill">Pandas · Matplotlib</span>
         </footer>
       </article>
@@ -393,7 +473,7 @@
     <section id="contact" class="card" style="margin-top:18px">
       <div class="card-body" style="text-align:center">
         <h3 style="margin-bottom:6px">Let’s Connect</h3>
-        <p class="muted" style="color:var(--muted); margin:0 0 10px">
+        <p class="muted" style="margin:0 0 10px">
           Open to internships &amp; full-time roles in Data Analytics / Business Intelligence.
         </p>
         <div class="links">
